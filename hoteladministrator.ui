@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HotelAdministrator</class>
+ <widget class="QWidget" name="HotelAdministrator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>HotelAdministrator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../Downloads/ic_launcher.png</normaloff>../../Downloads/ic_launcher.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="aboutLabel">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Добро пожаловать&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Программа администрирования отеля&lt;/p&gt;&lt;p&gt;Предназначена для поселения, выселения жильцов отеля&lt;br/&gt;и просмотра информации о них&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="settlementBtn">
+     <property name="text">
+      <string>Поселение клиента</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="evictionBtn">
+     <property name="text">
+      <string>Выселение клиента</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="displayBtn">
+     <property name="text">
+      <string>Список всех клиентов</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="searchBtn">
+     <property name="text">
+      <string>Поиск клиента</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
