@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/forms.css">
+    <title>Admin</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="img/logo.png" alt="logo">
+        <nav>
+            <span class="grad-left"></span>
+            <a href="index.html">Homepage</a>
+            <a href="expositions.html">Expositions</a>
+            <a href="painters.html">Painters</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="registration.html">Registration</a>
+            <a href="login.html">Login</a>
+            <span class="grad-right"></span>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="login">
+            <form action="login.php" method="post" onsubmit="sign_in(); return false;">
+                <h3>Log in</h3>
+                <div class="fieldset">
+                    <input type="text" name="sign_in_login" placeholder="Login" id="sign_in_login">
+                </div>
+                <div class="fieldset">
+                    <input type="password" name="sign_in_password" placeholder="Password" id="sign_in_password">
+                </div>
+                <input type="submit" value="Log in">
+            </form>
+        </div>
+        <hr>
+        <div id="registration">
+            <form action="registration.php" method="post" onsubmit="sign_up(); return false;">
+                <h3>Registration</h3>
+                <div class="fieldset">
+                    <input type="text" name="sign_up_login" id="sign_up_login" placeholder="Login" required><br>
+                </div>
+                <div class="fieldset">
+                    <input type="password" name="sign_up_password" id="sign_up_password" placeholder="Password" required><br>
+                </div>
+                <div class="fieldset">
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password" required><br>
+                </div>
+                <div class="fieldset">
+                    <input type="email" name="email" id="email" placeholder="Email" required><br>
+                </div>
+                <div class="fieldset">
+                    <input type="text" name="full_name" id="full_name" placeholder="Full name" required>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <hr>
+        <div id="comments"></div>
+        <br>
+        <form action="comments.php" method="post" onsubmit="create_comment(); return false;">
+            <div class="fieldset">
+                <input type="text" name="comment" id="comment" placeholder="Comment" required>
+            </div>
+            <input type="submit" value="Add new comment"">
+        </form>
+        <hr>
+        <div id="unapproved-comments"></div>
+        <div id="users-list"></div>
+    </div>
+    <footer>
+        <a href="#logo">back to the top</a>
+        © 2016, Kholin Nikita
+    </footer>
+    <script src="script/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+h3 {
+    background: radial-gradient(ellipse farthest-side at center, #e67e22, transparent);
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.fieldset {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+input {
+    flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#gender {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio-group {
+    display: flex;
+}
+
+input[type="submit"] {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 75px;
+    background: #e67e22;
+    color: #FFF;
+}
+
+.comments-navigation .left {
+    float: left;
+}
+
+.comments-navigation, .users-navigation .right {
+    float: right;
+}
