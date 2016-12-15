@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get 'rooms/single-halfluxury', to: 'rooms#single_halfluxury'
   get 'rooms/double-halfluxury', to: 'rooms#double_halfluxury'
   get 'rooms/luxury', to: 'rooms#luxury'
-  # get 'reservations#index'
+  resources :reservations, only: [:new, :create]
 end
