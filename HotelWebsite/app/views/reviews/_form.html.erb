@@ -1,0 +1,17 @@
+<%= bootstrap_form_for(@review, layout: :horizontal) do |f| %>
+  <% if @review.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+   <%= f.text_field :text, required: true %>
+   <%= f.select :rating, options_for_select((1..10).to_a.map{|s| ["#{s}", s]}, 10)%>
+
+   <p class="text-center"><%= f.submit "Add review", class: 'btn btn-lg btn-primary' %></p>
+<% end %>

@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :reservations, only: [:new, :create]
+  resources :reviews, only: [:index, :create, :destroy]
 end
