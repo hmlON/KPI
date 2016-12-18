@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   }
   resources :reservations, only: [:new, :create]
   resources :reviews, only: [:index, :create, :destroy]
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

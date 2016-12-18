@@ -14,7 +14,6 @@
   </div>
   <div class="panel-body">
     <%= review.text %>
-    <%= review.rating %>
 
     <% if current_user == review.user %>
       <%= link_to 'Delete', review_path(review), method: :delete %>

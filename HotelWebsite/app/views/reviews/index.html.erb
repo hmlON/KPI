@@ -6,10 +6,6 @@
 
 <div class="box">
   <div class="col-lg-8 col-lg-offset-2">
-    <% @reviews.each do |review| %>
-      <div class="review">
-        <%= render review %>
-      </div>
-    <% end %>
+    <%= render @reviews %>
   </div>
 </div>

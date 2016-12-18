@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   belongs_to :user;
 
   validates_presence_of :apartment_type, :payment_type, :arrival_date,
-                        :departure_date
+                        :departure_date, :user_id
   validate :arrival_date_cannot_be_in_the_past
   validate :departure_date_is_later_than_arrival_date
 
