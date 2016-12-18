@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div id="review-<%= review.id %>" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
       <%= review.user.name %>
@@ -13,11 +13,17 @@
     </h3>
   </div>
   <div class="panel-body">
-    <%= review.text %>
+    <p class="review-text  ">
+      <%= review.text %>
+    </p>
+    <div class="pull-right">
+      <% if current_user == review.user %>
+        <%= link_to 'Delete', review_path(review), method: :delete, remote: true %> |
+      <% end %>
 
-    <% if current_user == review.user %>
-      <%= link_to 'Delete', review_path(review), method: :delete %>
-    <% end %>
-
+      <small>
+        <%= time_ago_in_words(review.created_at) %> ago
+      </small>
+    </div>
   </div>
 </div>
