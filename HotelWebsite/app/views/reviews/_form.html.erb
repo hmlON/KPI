@@ -1,17 +1,23 @@
 <%= bootstrap_form_for(@review, layout: :horizontal, remote: true) do |f| %>
   <% if @review.errors.any? %>
-      <div id="error_explanation" class="alert alert-danger">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this post from being saved:</h2>
-        <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :text, required: true %>
+  <%= f.select :rating, options_for_select((1..10).to_a.map{|s| ["#{s}", s]}, 10)%>
+
+  <div class="text-center">
+    <% if user_signed_in? %>
+      <%= f.submit "Add review", class: 'btn btn-lg btn-primary' %>
+    <% else %>
+      <%= f.submit "Add review", class: 'btn btn-lg btn-primary', disabled: true, title: "Only registered users can leave reviews!" %>
     <% end %>
-
-   <%= f.text_field :text, required: true %>
-   <%= f.select :rating, options_for_select((1..10).to_a.map{|s| ["#{s}", s]}, 10)%>
-
-   <p class="text-center"><%= f.submit "Add review", class: 'btn btn-lg btn-primary' %></p>
+  </div>
 <% end %>
