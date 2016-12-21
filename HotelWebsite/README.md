@@ -1,24 +1,15 @@
-# README
+# HotelWebsite
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A website for hotel.
 
-Things you may want to cover:
+### List of features:
+* User authentification (devise)
+* Rooms overview
+* Reservations
+* Hotel reviews
+* Administration (rails_admin)
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+System properties:
+* Ruby version: 2.2.4
+* Database: postgersql
