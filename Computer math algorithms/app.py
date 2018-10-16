@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import numpy as np
 from scipy import integrate
 app = Flask(__name__)
@@ -9,15 +9,20 @@ def index():
 
 @app.route("/lab1")
 def lab1():
-    A = np.array([
-      [2, 2, -3, -1],
-      [1, 3, 3, -7],
-      [2, -1, -1, 3],
-      [3, 2, 2, -4]
-    ])
-    b = np.array([0, 0, 0, 0])
-    x = np.linalg.solve(A, b)
-    return render_template('lab1.html', A=A, b=b, x=x)
+    # A = np.array([
+    #   [2, 2, -3, -1],
+    #   [1, 3, 3, -7],
+    #   [2, -1, -1, 3],
+    #   [3, 2, 2, -4]
+    # ])
+    # b = np.array([0, 0, 0, 0])
+    equations_number = request.args.get('equations_number', type = int)
+    b = request.args.getlist('b', type=int)
+    A = np.array(request.args.getlist('a', type=int)).reshape(len(b), len(b))
+    x = np.array([])
+    if len(b) > 0:
+        x = np.linalg.solve(A, b)
+    return render_template('lab1.html', equations_number=equations_number, A=A, b=b, x=x)
 
 @app.route("/lab2")
 def lab2():

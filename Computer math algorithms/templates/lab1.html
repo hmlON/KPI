@@ -5,16 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lab 1: СЛАУ</title>
   <style type="text/css">
-    body{margin:40px
-    auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
-    10px}h1,h2,h3{line-height:1.2}
+    body{
+      margin:40px auto;
+      max-width:650px;
+      line-height:1.6;
+      font-size:18px;
+      color:#444;
+      padding:0 10px
+    }
+    h1,h2,h3 { line-height:1.2 }
+    .matrix-number { width: 30px }
+    .b { margin-left: 40px }
   </style>
 </head>
 <body>
-  <h1>Lab 1</h1>
-  <p>A = {{ A }}</p>
-  <p>B = {{ b }}</p>
+  <h1>System of linear equations</h1>
   <p>Ax = b</p>
-  <p>x = {{ x }}</p>
+  {% if x.size > 0 %}
+    <p>A = {{ A }}</p>
+    <p>B = {{ b }}</p>
+    <p>x = {{ x }}</p>
+  {% elif equations_number %}
+    <form action="/lab1">
+      {% for i in range(equations_number) %}
+        {% for j in range(equations_number) %}
+          <label for="a">A[{{i+1}}, {{j+1}}]:</label>
+          <input type="number" name="a" class="matrix-number matrix-number--a" required>
+        {% endfor %}
+        <span class="b">
+          <label for="b">b[{{i}}]:</label>
+          <input type="number" name="b" class="matrix-number" required>
+        </span>
+        <br>
+      {% endfor %}
+      <input type="submit" value="Solve">
+    </form>
+  {% else %}
+    <form action="/lab1">
+      Number of equations: <input type="number" name="equations_number"><br>
+      <input type="submit" value="Submit">
+    </form>
+  {% endif %}
 </body>
 </html>
