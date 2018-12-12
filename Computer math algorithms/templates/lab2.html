@@ -12,9 +12,22 @@
 </head>
 <body>
   <h1>Lab 2</h1>
-  <p>f = x * np.arctan(x)</p>
-  <p>a = {{ a }}</p>
-  <p>b = {{ b }}</p>
-  <p>Integral f from a to b = {{ x }}</p>
+  <p>f = x * arctan(x)</p>
+  {% if x %}
+    <p>a = {{ a }}</p>
+    <p>b = {{ b }}</p>
+    <p>Integral f from a to b = {{ x }}</p>
+  {% else %}
+    <form action="/lab2">
+      <label for="a">a:</label>
+      <input type="number" name="a" class="" required min="-1000000" max="1000000">
+      
+      <label for="b">b:</label>
+      <input type="number" name="b" class="" required min="-1000000" max="1000000">
+      <br>
+
+      <input type="submit" value="Solve">
+    </form>
+  {% endif %}
 </body>
 </html>

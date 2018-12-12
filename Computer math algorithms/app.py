@@ -22,15 +22,36 @@ def lab1():
     x = np.array([])
     if len(b) > 0:
         x = np.linalg.solve(A, b)
+        # n = len(les)
+        # tmp = list(zip(*les))
+        # b = tmp[-1]
+        # del tmp[-1]
+
+        # delta = det(tmp)
+        # if not delta:
+        #     raise RuntimeError("Решения нет")
+
+        # result = []
+        # for i in range(n):
+        #     a = tmp[:]
+        #     a[i] = b
+        #     result.append(det(a) / delta)
     return render_template('lab1.html', equations_number=equations_number, A=A, b=b, x=x)
 
 @app.route("/lab2")
 def lab2():
     f = lambda x: x * np.arctan(x)
-    a = 0
-    b = 1
-    i, err = integrate.quad(f, a, b)
-    return render_template('lab2.html', a=a, b=b, i=i)
+    # a = 0
+    # b = 1
+
+    a = request.args.get('a', type=float)
+    b = request.args.get('b', type=float)
+
+    x = None
+    if a != None and b != None:
+        x, err = integrate.quad(f, a, b)
+
+    return render_template('lab2.html', a=a, b=b, x=x)
 
 @app.route("/lab3")
 def lab3():

@@ -30,11 +30,11 @@
       {% for i in range(equations_number) %}
         {% for j in range(equations_number) %}
           <label for="a">A[{{i+1}}, {{j+1}}]:</label>
-          <input type="number" name="a" class="matrix-number matrix-number--a" required>
+          <input type="number" name="a" class="matrix-number matrix-number--a" required min="-1000000" max="1000000">
         {% endfor %}
         <span class="b">
           <label for="b">b[{{i}}]:</label>
-          <input type="number" name="b" class="matrix-number" required>
+          <input type="number" name="b" class="matrix-number" required min="-1000000" max="1000000">
         </span>
         <br>
       {% endfor %}
@@ -42,7 +42,9 @@
     </form>
   {% else %}
     <form action="/lab1">
-      Number of equations: <input type="number" name="equations_number"><br>
+      <label for="equations_number">Number of equations:</label>
+      <input type="number" name="equations_number" required min="1" max="100">
+      <br>
       <input type="submit" value="Submit">
     </form>
   {% endif %}
