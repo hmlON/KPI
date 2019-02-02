@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <title>Lists | ToDo for Students</title>
+  </head>
+  <body>
+    <a href="{{ url_for('logout') }}">Log out</a>
+    <h1>ToDo list for Students</h1>
+
+    <h2>Lists</h2>
+    {% if lists|length > 0 %}
+      <ul>
+        {% for list in lists %}
+          <li>
+            <a href="{{ url_for('show_list', id=list[0]) }}">{{ list[1] }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Looks like you don't have any lists. Try creating one...</p>
+    {% endif %}
+
+    <h2>Create a list</h2>
+    <form action="{{ url_for('create_list') }}" method="POST">
+      <label for="name">Name</label>
+      <input type="text" name="name" required>
+      <input type="submit" value="Create">
+    </form>
+  </body>
+</html>

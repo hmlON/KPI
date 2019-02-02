@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>ToDo for Students</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>ToDo list for Students</h1>
+
+    <h2>Sign up</h2>
+    <form action="{{ url_for('signup') }}" method="POST">
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="Email" required>
+      <label for="Password">Password</label>
+      <input type="password" name="password" required>
+      <input type="submit" value="Sign up">
+    </form>
+
+    <h2>Log in</h2>
+    <form action="{{ url_for('login') }}" method="POST">
+      <label for="email">Email</label>
+      <input type="email" name="email" required>
+      <label for="Password">Password</label>
+      <input type="password" name="password" required>
+      <input type="submit" value="Log in">
+    </form>
+  </body>
+</html>

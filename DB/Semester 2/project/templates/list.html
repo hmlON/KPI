@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <title>{{ task_list[1] }} | ToDo for Students</title>
+  </head>
+  <body>
+    <a href="{{ url_for('show_lists') }}">Back to lists</a>
+    <h1>List "{{ task_list[1] }}"</h1>
+
+    <p>
+      Progress
+      <progress value="{{completed|length}}" max="{{incompleted|length + completed|length}}"></progress>
+    </p>
+
+    <hr>
+
+    <h2>Create a task</h2>
+    <form action="{{ url_for('create_task') }}" method="POST" id="create-task">
+      <input type="hidden" name="list_id" value="{{ task_list[0] }}">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" required>
+      </div>
+      <div>
+      <label for="name">Description</label>
+        <textarea rows="1" cols="50" name="description" form="create-task"></textarea>
+      </div>
+      <div>
+        <label for="name">Due date</label>
+        <input type="date" name="due_date">
+      </div>
+      <input type="submit" value="Create">
+    </form>
+
+    <hr>
+
+    <h2>To Do</h2>
+    {% if incompleted|length > 0 %}
+      <ul>
+        {% for task in incompleted %}
+          <li>
+            <form action="{{ url_for('check_task', id=task[0]) }}" method="POST" class="task-check-form">
+              <input type="checkbox" name="checked" onChange="this.form.submit()">
+              <input type="hidden" name="list_id" value="{{ task_list[0] }}">
+              <label for="checked">{{ task[1] }}</label>
+            </form>
+
+            <form action="{{ url_for('delete_task', id=task[0]) }}" method="POST" class="task-delete-form">
+              <input type="hidden" name="list_id" value="{{ task_list[0] }}">
+              <input type="submit" value="×">
+            </form>
+
+            {% if task[3] %}
+              <div>Description: {{ task[3] }}</div>
+            {% endif %}
+
+            {% if task[4] %}
+              <div>Due: {{ task[4] }}</div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Looks like you're all done!</p>
+    {% endif %}
+
+    <hr>
+
+    <h2>Done</h2>
+    {% if completed|length > 0 %}
+      <ul>
+        {% for task in completed %}
+          <li>
+            <form action="{{ url_for('uncheck_task', id=task[0]) }}" method="POST" class="task-check-form">
+              <input type="checkbox" name="checked" onChange="this.form.submit()" checked>
+              <input type="hidden" name="list_id" value="{{ task_list[0] }}">
+              <label for="checked">{{ task[1] }}</label>
+            </form>
+
+            <form action="{{ url_for('delete_task', id=task[0]) }}" method="POST" class="task-delete-form">
+              <input type="hidden" name="list_id" value="{{ task_list[0] }}">
+              <input type="submit" value="×">
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Looks like you haven't done anything... Think about it...</p>
+    {% endif %}
+
+    <form action="{{ url_for('delete_list', id=task_list[0]) }}" method="POST">
+      <input type="submit" value="Delete list">
+    </form>
+  </body>
+</html>
