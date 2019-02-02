@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 4: TK</title>
+  <style type="text/css">
+    body{margin:40px
+    auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
+    10px}h1,h2,h3{line-height:1.2}
+  </style>
+</head>
+<body>
+  <h1>Lab 4</h1>
+  <!-- <p>y' = x<sup>2</sup> + 3y<sup>2</sup></p> -->
+  {% if res %}
+    <p>f(x): {{ res.fun }}</p>
+    <p>x: {{ res.x }}</p>
+    <p>num iterations: {{ res.nit }}</p>
+  {% else %}
+    <form action="/lab4">
+      {% for I in range(3) %}
+        <label for="x0">x0[{{I+1}}]:</label>
+        <input type="number" name="x0" required step=any min="-1000000" max="1000000">
+      {% endfor %}
+      <br>
+
+      <label for="precision">precision:</label>
+      <input type="number" name="precision" value="10e-3" required step=any min="-1000000" max="1000000">
+
+      <br>
+
+      <input type="submit" value="Solve">
+    </form>
+  {% endif %}
+</body>
+</html>

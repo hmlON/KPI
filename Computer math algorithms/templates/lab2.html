@@ -20,10 +20,14 @@
   {% else %}
     <form action="/lab2">
       <label for="a">a:</label>
-      <input type="number" name="a" class="" required min="-1000000" max="1000000">
+      <input type="number" step=any name="a" class="" required min="-1000000" max="1000000">
       
       <label for="b">b:</label>
-      <input type="number" name="b" class="" required min="-1000000" max="1000000">
+      <input type="number" step=any name="b" class="" required min="-1000000" max="1000000">
+      <br>
+
+      <label for="b">n:</label>
+      <input type="number" name="n" class="" required min="2" max="1000">
       <br>
 
       <input type="submit" value="Solve">
